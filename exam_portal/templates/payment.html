@@ -1,18 +1,25 @@
-<div class="hero">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Registration</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="payment-container">
 
     <h1>Exam Registration</h1>
 
-    <form method="POST" action="/register">
-
-        <br>
+    <form action="/success" method="POST">
 
         <input
         type="text"
         name="name"
-        placeholder="Enter Name"
+        placeholder="Full Name"
         required>
-
-        <br><br>
 
         <input
         type="text"
@@ -20,20 +27,19 @@
         placeholder="Phone Number"
         required>
 
-        <br><br>
-
         <input
         type="text"
         name="telegram"
         placeholder="Telegram Username"
         required>
 
-        <br><br>
-
-        <button class="btn">
-            Proceed To Payment
+        <button type="submit">
+            Pay ₹99
         </button>
 
     </form>
 
 </div>
+
+</body>
+</html>

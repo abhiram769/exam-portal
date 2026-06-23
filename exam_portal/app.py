@@ -1,23 +1,22 @@
-from flask import Flask, render_template
-from config import Config
 from flask import Flask, render_template, request
+from config import Config
 import sqlite3
 import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
+
 @app.route("/")
 def home():
     return render_template("home.html")
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
 
 @app.route("/payment")
 def payment():
     return render_template("payment.html")
+
+
 @app.route("/register", methods=["POST"])
 def register():
 
@@ -38,16 +37,17 @@ def register():
     conn.commit()
     conn.close()
 
-    return f"""
-    <h1>Registration Received</h1>
+    return render_template("success.html")
 
-    <p>Name: {name}</p>
 
-    <p>Next Step: Payment Gateway</p>
-    """
+@app.route("/success")
+def success():
+    return render_template("success.html")
+
 
 if __name__ == "__main__":
-     app.run(
+    app.run(
         host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)))
-     app.run(debug=True)
+        port=int(os.environ.get("PORT", 5000)),
+        debug=True
+    )

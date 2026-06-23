@@ -1,33 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Exam Portal</title>
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <title>Online Exam Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/payment">Payment</a></li>
-    </ul>
+    <h2>Online Exam Portal</h2>
+    <a href="/payment" class="nav-btn">Register</a>
 </nav>
 
-<div class="hero">
+<section class="hero">
 
-    <h1>Online Exam Portal</h1>
+    <h1>ONLINE EXAM PORTAL</h1>
 
     <p>
-        Register and participate in our exams.
+        Register for online exams and mock tests.
+        Get updates through our Telegram community.
     </p>
 
     <a href="/payment" class="btn">
         Register Now
     </a>
 
-</div>
+</section>
+
+<section class="features">
+
+    <div class="card">
+        <h3>Online Exams</h3>
+        <p>Attend exams from anywhere.</p>
+    </div>
+
+    <div class="card">
+        <h3>Quick Registration</h3>
+        <p>Simple and fast process.</p>
+    </div>
+
+    <div class="card">
+        <h3>Telegram Updates</h3>
+        <p>Instant notifications.</p>
+    </div>
+
+</section>
+
+<section id="telegram-box" style="display:none;">
+
+    <h2>Payment Successful 🎉</h2>
+
+    <p>
+        Join our Telegram Channel
+    </p>
+
+    <a
+    href="https://t.me/YOUR_CHANNEL"
+    target="_blank"
+    class="telegram-btn">
+
+        Join Telegram
+
+    </a>
+
+</section>
+
+<script>
+
+const params =
+new URLSearchParams(window.location.search);
+
+if(params.get("paid")){
+
+document.getElementById(
+"telegram-box"
+).style.display="block";
+
+}
+
+</script>
 
 </body>
 </html>
