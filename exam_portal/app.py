@@ -138,6 +138,12 @@ def admin_login():
     return render_template("admin_login.html")
 
 
+@app.route("/admin/logout")
+def admin_logout():
+
+    session.clear()
+
+    return redirect("/admin/login")
 @app.route("/admin/dashboard")
 def admin_dashboard():
 
@@ -148,16 +154,7 @@ def admin_dashboard():
     cursor = conn.cursor()
 
     cursor.execute("""
-        SELECT
-            id,
-            name,
-            phone,
-            telegram,
-            amount,
-            payment_id,
-            order_id,
-            status,
-            payment_date
+        SELECT *
         FROM payments
         ORDER BY id DESC
     """)
@@ -170,16 +167,37 @@ def admin_dashboard():
         "admin_dashboard.html",
         payments=payments
     )
+@app.route("/webhook", methods=["POST"])
+def webhook():
 
+    payload = request.get_data(as_text=True)
 
-@app.route("/admin/logout")
-def admin_logout():
+    event = request.json.get("event")
 
-    session.clear()
+    if event == "payment.captured":
 
-    return redirect("/admin/login")
+        payment = request.json["payload"]["payment"]["entity"]
 
+        payment_id = payment["id"]
+        order_id = payment["order_id"]
 
+        conn = sqlite3.connect("payments.db")
+        cursor = conn.cursor()
+
+        cursor.execute(
+            """
+            UPDATE payments
+            SET payment_id=?,
+                status='Paid'
+            WHERE order_id=?
+            """,
+            (payment_id, order_id)
+        )
+
+        conn.commit()
+        conn.close()
+
+    return "OK", 200
 
 if __name__ == "__main__":
     app.run(

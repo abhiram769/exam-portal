@@ -1,42 +1,177 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
+
 <head>
-    <title>Admin Dashboard</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:30px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.header h1{
+    color:#2563eb;
+}
+
+.logout-btn{
+    text-decoration:none;
+    background:#ef4444;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+}
+
+.table-container{
+    background:white;
+    border-radius:12px;
+    overflow:auto;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+    background:#f9fafb;
+}
+
+.paid{
+    color:green;
+    font-weight:bold;
+}
+
+.pending{
+    color:orange;
+    font-weight:bold;
+}
+
+</style>
+
 </head>
+
 <body>
 
-<h1>Payment Records</h1>
+<div class="header">
 
-<a href="/admin/logout">Logout</a>
+```
+<h1>Payment Dashboard</h1>
 
-<table border="1" cellpadding="10">
+<a href="/admin/logout" class="logout-btn">
+    Logout
+</a>
+```
+
+</div>
+
+<div class="table-container">
+
+<table>
+
+<thead>
 
 <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Phone</th>
-    <th>Telegram</th>
-    <th>Amount</th>
-    <th>Status</th>
-    <th>Date</th>
+
+```
+<th>ID</th>
+<th>Name</th>
+<th>Phone</th>
+<th>Telegram</th>
+<th>Payment ID</th>
+<th>Order ID</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Date</th>
+```
+
 </tr>
+
+</thead>
+
+<tbody>
 
 {% for p in payments %}
 
 <tr>
-    <td>{{ p[0] }}</td>
-    <td>{{ p[1] }}</td>
-    <td>{{ p[2] }}</td>
-    <td>{{ p[3] }}</td>
-    <td>₹{{ p[4] }}</td>
-    <td>{{ p[5] }}</td>
-    <td>{{ p[6] }}</td>
+
+```
+<td>{{ p[0] }}</td>
+
+<td>{{ p[1] }}</td>
+
+<td>{{ p[2] }}</td>
+
+<td>{{ p[3] }}</td>
+
+<td>{{ p[4] }}</td>
+
+<td>{{ p[5] }}</td>
+
+<td>₹{{ p[6] }}</td>
+
+<td>
+
+    {% if p[7] == "Paid" %}
+        <span class="paid">Paid</span>
+    {% else %}
+        <span class="pending">{{ p[7] }}</span>
+    {% endif %}
+
+</td>
+
+<td>{{ p[8] }}</td>
+```
+
 </tr>
 
 {% endfor %}
 
+</tbody>
+
 </table>
 
+</div>
+
 </body>
+
 </html>
+<script>
+setTimeout(function () {
+    location.reload();
+}, 10000);
+</script>
