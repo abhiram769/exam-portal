@@ -1,79 +1,117 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
-    <title>Online Exam Portal</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Exam Portal</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-<nav>
-    <h2>Online Exam Portal</h2>
-    <a href="/payment" class="nav-btn">Register</a>
+<nav class="navbar">
+
+```
+<div class="logo">
+    Exam Portal
+</div>
+
+<ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/payment">Register</a></li>
+</ul>
+```
+
 </nav>
 
 <section class="hero">
 
-    <h1>ONLINE EXAM PORTAL</h1>
+```
+<div class="hero-content">
+
+    <h1>
+        Crack Your Next Exam With Confidence 🚀
+    </h1>
 
     <p>
-        Register for online exams and mock tests.
-        Get updates through our Telegram community.
+        Participate in online mock tests and competitive exams.
+        Get instant updates and exam access through Telegram.
     </p>
 
-    <a href="/payment" class="btn">
+    <a href="/payment" class="hero-btn">
         Register Now
     </a>
+
+</div>
+```
 
 </section>
 
 <section class="features">
 
-    <div class="card">
-        <h3>Online Exams</h3>
-        <p>Attend exams from anywhere.</p>
-    </div>
+```
+<div class="feature-card">
+    <div class="icon">📝</div>
+    <h3>Online Exams</h3>
+    <p>Attend exams anytime from anywhere.</p>
+</div>
 
-    <div class="card">
-        <h3>Quick Registration</h3>
-        <p>Simple and fast process.</p>
-    </div>
+<div class="feature-card">
+    <div class="icon">⚡</div>
+    <h3>Quick Registration</h3>
+    <p>Simple registration in less than a minute.</p>
+</div>
 
-    <div class="card">
-        <h3>Telegram Updates</h3>
-        <p>Instant notifications.</p>
-    </div>
+<div class="feature-card">
+    <div class="icon">📢</div>
+    <h3>Telegram Updates</h3>
+    <p>Receive instant notifications and exam details.</p>
+</div>
+```
 
 </section>
 
 <section id="telegram-box" style="display:none;">
 
-    <h2>Payment Successful 🎉</h2>
+```
+<h2>🎉 Registration Successful</h2>
 
-    <p>
-        Join our Telegram Channel
-    </p>
+<p>
+    Join our Telegram channel to receive exam links and updates.
+</p>
 
-    <a
-    href="https://t.me/YOUR_CHANNEL"
-    target="_blank"
-    class="telegram-btn">
+<a href="https://t.me/YOUR_CHANNEL"
+   target="_blank"
+   class="telegram-btn">
 
-        Join Telegram
+   Join Telegram Channel
 
-    </a>
+</a>
+```
 
 </section>
 
+<footer>
+
+```
+<p>
+    © 2026 Online Exam Portal. All Rights Reserved.
+</p>
+```
+
+</footer>
+
 <script>
 
-const params =
-new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
 if(params.get("paid")){
 
-document.getElementById(
-"telegram-box"
-).style.display="block";
+    document.getElementById("telegram-box").style.display="block";
 
 }
 
