@@ -1,16 +1,164 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
+
 <head>
-    <title>Pay Now</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Complete Payment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+}
+
+.payment-card{
+
+    width:500px;
+
+    max-width:90%;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.payment-icon{
+
+    font-size:60px;
+
+    margin-bottom:15px;
+}
+
+.payment-card h1{
+
+    margin-bottom:15px;
+
+    color:#1e293b;
+}
+
+.payment-card p{
+
+    color:#64748b;
+
+    margin-bottom:25px;
+}
+
+.amount{
+
+    font-size:40px;
+
+    font-weight:700;
+
+    color:#2563eb;
+
+    margin-bottom:25px;
+}
+
+#rzp-button1{
+
+    width:100%;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+}
+
+#rzp-button1:hover{
+
+    transform:translateY(-2px);
+}
+
+.secure{
+
+    margin-top:20px;
+
+    color:#64748b;
+
+    font-size:14px;
+}
+
+</style>
+
 </head>
+
 <body>
 
-<h1>Complete Payment</h1>
+<div class="payment-card">
+
+```
+<div class="payment-icon">
+    💳
+</div>
+
+<h1>Complete Your Payment</h1>
+
+<p>
+    Secure payment powered by Razorpay
+</p>
+
+<div class="amount">
+    ₹{{ amount }}
+</div>
 
 <button id="rzp-button1">
-    Pay ₹{{ amount }}
+    Pay Now
 </button>
+
+<div class="secure">
+    🔒 100% Secure Payment
+</div>
+```
+
+</div>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
