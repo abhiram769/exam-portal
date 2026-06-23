@@ -178,19 +178,7 @@ def admin_logout():
     session.clear()
 
     return redirect("/admin/login")
-@app.route("/admin/clear-db")
-def clear_db():
 
-    conn = sqlite3.connect("payments.db")
-    cursor = conn.cursor()
-
-    cursor.execute("DELETE FROM payments")
-    cursor.execute("DELETE FROM sqlite_sequence WHERE name='payments'")
-
-    conn.commit()
-    conn.close()
-
-    return "Database Cleared Successfully"
 
 
 if __name__ == "__main__":
