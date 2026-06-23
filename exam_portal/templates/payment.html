@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Exam Registration</title>
 
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='style.css') }}">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Registration</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="payment-container">
+<nav class="navbar">
+
+```
+<div class="logo">
+    Exam Portal
+</div>
+
+<ul class="nav-links">
+    <li><a href="/">Home</a></li>
+</ul>
+```
+
+</nav>
+
+<div class="payment-page">
+
+```
+<div class="payment-card">
 
     <h1>Exam Registration</h1>
+
+    <p class="payment-subtitle">
+        Complete the registration form below.
+    </p>
 
     <form action="/register" method="POST">
 
@@ -34,10 +59,13 @@
         required>
 
         <button type="submit">
-            Pay ₹99
+            Register Now
         </button>
 
     </form>
+
+</div>
+```
 
 </div>
 
