@@ -166,19 +166,28 @@ body{
 
 var options = {
 
-    "key": "{{ razorpay_key }}",
+    key: "{{ razorpay_key }}",
 
-    "amount": "{{ amount_paise }}",
+    amount: "{{ amount_paise }}",
 
-    "currency": "INR",
+    currency: "INR",
 
-    "name": "Exam Portal",
+    name: "Exam Portal",
 
-    "description": "Exam Registration",
+    description: "Exam Registration",
 
-    "order_id": "{{ order_id }}",
+    order_id: "{{ order_id }}",
 
-    "handler": function (response) {
+    prefill: {
+        contact: "",
+        email: ""
+    },
+
+    theme: {
+        color: "#2563eb"
+    },
+
+    handler: function (response) {
 
         const form = document.createElement("form");
 
@@ -194,7 +203,6 @@ var options = {
         document.body.appendChild(form);
         form.submit();
     }
-
 };
 
 var rzp1 = new Razorpay(options);
