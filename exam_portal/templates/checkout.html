@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Pay Now</title>
+</head>
+<body>
+
+<h1>Complete Payment</h1>
+
+<button id="rzp-button1">
+    Pay ₹{{ amount }}
+</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+
+var options = {
+
+    "key": "{{ razorpay_key }}",
+
+    "amount": "{{ amount_paise }}",
+
+    "currency": "INR",
+
+    "name": "Exam Portal",
+
+    "description": "Exam Registration",
+
+    "order_id": "{{ order_id }}",
+
+    "handler": function (response) {
+
+        const form = document.createElement("form");
+
+        form.method = "POST";
+        form.action = "/verify-payment";
+
+        form.innerHTML = `
+            <input type="hidden" name="payment_id" value="${response.razorpay_payment_id}">
+            <input type="hidden" name="order_id" value="${response.razorpay_order_id}">
+            <input type="hidden" name="signature" value="${response.razorpay_signature}">
+        `;
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+};
+
+var rzp1 = new Razorpay(options);
+
+document.getElementById("rzp-button1").onclick = function(e){
+
+    rzp1.open();
+
+    e.preventDefault();
+};
+
+</script>
+
+</body>
+</html>

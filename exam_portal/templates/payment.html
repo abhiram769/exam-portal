@@ -1,73 +1,154 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
+
+```
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Exam Registration</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+```
+
 </head>
 
 <body>
 
+```
 <nav class="navbar">
 
-```
-<div class="logo">
-    Exam Portal
-</div>
+    <div class="logo">
+        Exam Portal
+    </div>
 
-<ul class="nav-links">
-    <li><a href="/">Home</a></li>
-</ul>
-```
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+    </ul>
 
 </nav>
 
 <div class="payment-page">
 
-```
-<div class="payment-card">
+    <div class="payment-card">
 
-    <h1>Exam Registration</h1>
+        <h1>Exam Registration</h1>
 
-    <p class="payment-subtitle">
-        Complete the registration form below.
-    </p>
+        <p class="payment-subtitle">
+            Fill in your details and proceed with payment.
+        </p>
 
-    <form action="/register" method="POST">
+        <form action="/register" method="POST">
 
-        <input
-        type="text"
-        name="name"
-        placeholder="Full Name"
-        required>
+            <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                required>
 
-        <input
-        type="text"
-        name="phone"
-        placeholder="Phone Number"
-        required>
+            <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                required>
 
-        <input
-        type="text"
-        name="telegram"
-        placeholder="Telegram Username"
-        required>
+            <input
+                type="text"
+                name="telegram"
+                placeholder="Telegram Username"
+                required>
 
-        <button type="submit">
-            Register Now
-        </button>
+            <select
+                id="amountSelect"
+                name="amount"
+                onchange="toggleAmountField()"
+                required>
 
-    </form>
+                <option value="">
+                    Choose Amount
+                </option>
+
+                <option value="1500">
+                    ₹1500
+                </option>
+
+                <option value="2500">
+                    ₹2500
+                </option>
+
+                <option value="custom">
+                    Custom Amount
+                </option>
+
+            </select>
+
+            <input
+                type="number"
+                id="customAmount"
+                placeholder="Enter Custom Amount (₹)"
+                min="1"
+                style="display:none;">
+
+            <button type="submit">
+                Proceed To Payment
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
-```
 
-</div>
+<script>
+
+    function toggleAmountField() {
+
+        const select =
+            document.getElementById("amountSelect");
+
+        const customAmount =
+            document.getElementById("customAmount");
+
+        if (select.value === "custom") {
+
+            customAmount.style.display = "block";
+
+            customAmount.required = true;
+
+            customAmount.setAttribute(
+                "name",
+                "amount"
+            );
+
+            select.removeAttribute("name");
+
+        }
+        else {
+
+            customAmount.style.display = "none";
+
+            customAmount.required = false;
+
+            customAmount.value = "";
+
+            select.setAttribute(
+                "name",
+                "amount"
+            );
+
+            customAmount.removeAttribute("name");
+        }
+    }
+
+</script>
+```
 
 </body>
+
 </html>

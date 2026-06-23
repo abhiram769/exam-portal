@@ -337,3 +337,88 @@ color:#64748b;
 margin-bottom:10px;
 
 }
+.payment-card select{
+
+
+width:100%;
+
+padding:15px;
+
+margin-bottom:15px;
+
+border:1px solid #dbeafe;
+
+border-radius:12px;
+
+font-size:15px;
+
+background:white;
+
+outline:none;
+
+
+}
+
+.payment-card select:focus{
+
+
+border-color:#2563eb;
+
+}
+.payment-card select{
+
+
+width:100%;
+
+padding:15px;
+
+margin-bottom:15px;
+
+border:1px solid #dbeafe;
+
+border-radius:12px;
+
+font-size:15px;
+
+background:white;
+
+outline:none;
+
+
+}
+
+.payment-card select:focus{
+
+
+border-color:#2563eb;
+
+
+}
+
+#customAmount{
+
+
+width:100%;
+
+padding:15px;
+
+margin-bottom:15px;
+
+border:1px solid #dbeafe;
+
+border-radius:12px;
+
+font-size:15px;
+
+outline:none;
+
+
+}
+
+#customAmount:focus{
+
+
+border-color:#2563eb;
+
+
+}
